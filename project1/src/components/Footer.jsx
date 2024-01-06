@@ -28,11 +28,11 @@ const Footer = () => {
           </Text>
         </Box>
         <Box mr="100px" display="flex" gap="22px" w="117px" textColor="#8170F2">
-          <FaFacebookF />
-          <FaTwitter />
-          <FaInstagramSquare />
-          <FaLinkedinIn />
-          <FaYoutube />
+          <FaFacebookF fontSize="19px" />
+          <FaTwitter fontSize="19px" />
+          <FaInstagramSquare fontSize="19px" />
+          <FaLinkedinIn fontSize="19px" />
+          <FaYoutube fontSize="19px" />
         </Box>
       </Box>
     </>

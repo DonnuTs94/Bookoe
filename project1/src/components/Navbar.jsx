@@ -1,22 +1,60 @@
+/* eslint-disable react/prop-types */
 import { Box, Button, Icon, Image, Input, Text } from "@chakra-ui/react"
 import { Search2Icon } from "@chakra-ui/icons"
 import logo from "../assets/Group 3.png"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import { axiosInstance } from "../api"
+import { useDispatch } from "react-redux"
+import { searchKeyword, updateSearchResults } from "../redux/search/searchSlice"
 
 const Navbar = () => {
+  const [query, setQuery] = useState("")
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const handelSearch = async () => {
+    try {
+      const response = await axiosInstance.get(`books?search=${query}`)
+
+      const searchResults = response.data.data
+
+      if (searchResults.length === 0) {
+        navigate("notfound")
+        setQuery("")
+      } else {
+        dispatch(updateSearchResults(searchResults))
+        dispatch(searchKeyword(query))
+        navigate("search")
+        setQuery("")
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleKey = (e) => {
+    if (e.key === "Enter") {
+      handelSearch()
+    }
+  }
+
   return (
     <>
       <Box
-        // maxW="1241px"
+        maxW="1440px"
         position="fixed"
         display="flex"
         justifyContent="space-between"
-        px="100px"
         w="100%"
         zIndex={1}
         bgColor="white"
         top="0"
-        // marginX="100px"
+        left="0"
+        right="0"
+        m="0 auto"
+        paddingX="100px"
       >
         <Box display="flex" alignItems="center" position="relative">
           <Box mr="-25px" w="100px" h="100px" mt="33px">
@@ -44,15 +82,22 @@ const Navbar = () => {
           >
             <Text
               _hover={{ borderBottom: "solid 1px", transition: "0.5s" }}
-              mr="24px"
               cursor="pointer"
+              mr="24px"
             >
               <Link to={"/"}>All</Link>
             </Text>
-            <Text mr="24px">
+            <Text
+              mr="24px"
+              _hover={{ borderBottom: "solid 1px", transition: "0.5s" }}
+              cursor="pointer"
+            >
               <Link to={""}>Latest</Link>
             </Text>
-            <Text>
+            <Text
+              _hover={{ borderBottom: "solid 1px", transition: "0.5s" }}
+              cursor="pointer"
+            >
               <Link to={""}>Top Picks</Link>
             </Text>
           </Box>
@@ -68,6 +113,9 @@ const Navbar = () => {
               placeholder="Search by title or authors..."
               pl="50px"
               borderRadius="8px"
+              onChange={(e) => setQuery(e.target.value)}
+              value={query}
+              onKeyPress={handleKey}
             />
             <Icon
               as={Search2Icon}

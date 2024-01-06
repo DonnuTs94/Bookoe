@@ -7,9 +7,9 @@ import FooterCta from "../components/FooterCta"
 const BookoeLayout = () => {
   return (
     <>
-      <Box maxW="1440px">
+      <Box maxW="1440px" m="auto">
         <Navbar />
-        <Box mx="100px">
+        <Box>
           <Outlet />
         </Box>
         <FooterCta />

@@ -34,11 +34,10 @@ const HeroSection = () => {
         bgColor="#F1F0FE"
         margin="auto"
         display="flex"
-        mt="166px"
+        mt="140px"
         zIndex="0"
         position="relative"
-        maxW="1440px"
-        // w="100%"
+        mx="100px"
       >
         <Box margin="auto" ml="71px">
           <Text color="#8170F2" fontSize="20px">

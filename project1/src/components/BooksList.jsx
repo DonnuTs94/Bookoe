@@ -41,6 +41,7 @@ const BooksList = () => {
         mt="113px"
         zIndex="0"
         position="relative"
+        px="98px"
       >
         <Center margin="auto">
           <SimpleGrid columns={4} gap="64px">

@@ -25,9 +25,13 @@ const BookDetail = () => {
 
   return (
     <>
-      <Box mt="166px" display="flex">
+      <Box mt="166px" display="flex" px="98px">
         <Box mr="76px" maxH="587px" w="408px">
-          <Image borderRadius="14.5px" src={BookDetail.image_url} />
+          <Image
+            borderRadius="14.5px"
+            src={BookDetail.image_url}
+            boxSize="100%"
+          />
         </Box>
         <Box mt="62px">
           <Text
