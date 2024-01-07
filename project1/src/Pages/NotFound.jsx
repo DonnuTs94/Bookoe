@@ -1,11 +1,14 @@
 import { Box, Text } from "@chakra-ui/react"
 import SearchHeader from "../components/SearchHeader"
+import { useSelector } from "react-redux"
 
 const NotFound = () => {
+  const keyword = useSelector((state) => state.search.keyword)
+
   return (
     <>
       <Box mt="166px" px="100px">
-        <SearchHeader />
+        <SearchHeader keyword={keyword} titleB={"Search for"} />
         <Box
           border="1px #8170F2 solid"
           w="1241"

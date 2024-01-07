@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Box,
   Button,
@@ -7,28 +8,70 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react"
-import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { format } from "date-fns"
 
-const SearchList = () => {
-  const searchResults = useSelector((state) => state.search.searchResults)
-  const filteringData = searchResults.slice(0, 4)
-
-  console.log(filteringData)
+const SearchList = ({ bookData, renderDate, renderNumber, renderBorder }) => {
+  const filteringData = bookData.slice(0, 4)
 
   return (
     <>
       <Box mt="77px" display="flex" gap="64px">
-        {filteringData.map((item) => (
+        {filteringData.map((item, i) => (
           // <SimpleGrid key={item.id}>
           <Card key={item.id} w="265px" h="auto">
-            <CardBody>
+            <CardBody position="relative">
               <Image
                 src={item.image_url}
                 w="260px"
                 borderRadius="8px"
                 h="340px"
               />
+              {renderBorder && (
+                <Box
+                  h="41px"
+                  minWidth="80px"
+                  width="fit-content"
+                  backgroundColor="#8170F2"
+                  borderTopRightRadius="50px"
+                  borderBottomEndRadius="50px"
+                  position="absolute"
+                  top="12"
+                  mt="3px"
+                >
+                  {renderNumber && (
+                    <Box
+                      display="flex"
+                      bgColor="#ffffff"
+                      w="30px"
+                      h="30px"
+                      borderRadius="50px"
+                      textAlign="center"
+                      position="absolute"
+                      top="1"
+                      right="1"
+                      my="2px"
+                      mr="1px"
+                    >
+                      <Text margin="auto">{i + 1}</Text>
+                    </Box>
+                  )}
+                  {renderDate && (
+                    <Box
+                      key={item.id}
+                      fontSize="18.67px"
+                      color="#ffffff"
+                      lineHeight="28px"
+                      pl="18px"
+                      mr="29.81px"
+                      mt="6px"
+                    >
+                      {format(new Date(item.created_at), "dd/MM/yyyy")}
+                    </Box>
+                  )}
+                </Box>
+              )}
+
               <Text
                 fontSize="24px"
                 fontWeight="600"

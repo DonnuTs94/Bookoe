@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchBooksData } from "../redux/allBooks/booksAsync"
 
 const HeroSection = () => {
-  const [foundHighestRating, setFoundHighestRating] = useState([])
+  const [foundHighestRating, setFoundHighestRating] = useState(null)
   const dispatch = useDispatch()
   const booksData = useSelector((state) => state.books.books)
 
@@ -41,17 +41,16 @@ const HeroSection = () => {
             MUST READ
           </Text>
           <Text fontSize="62px" fontWeight="600">
-            {foundHighestRating.title}
+            {foundHighestRating?.title}
           </Text>
           <Box display="flex" mt="16px" mb="30px">
             <Text fontSize="16px" mr="16px">
-              {foundHighestRating.author ? foundHighestRating.author.name : ""}
+              {foundHighestRating?.author?.name || ""}
             </Text>
-            <Text>{foundHighestRating.rating}</Text>
+            <Text>{foundHighestRating?.rating}</Text>
           </Box>
 
-          <Text fontSize="16px">{foundHighestRating.synopsis}</Text>
-
+          <Text fontSize="16px">{foundHighestRating?.synopsis}</Text>
           <Box display="flex" mt="40px">
             <Button
               bgColor="#8170F2"
@@ -62,7 +61,7 @@ const HeroSection = () => {
               w="193px"
               mr="15px"
             >
-              <Link to={`/book/${foundHighestRating.id}`}>Read Book</Link>
+              <Link to={`/book/${foundHighestRating?.id}`}>Read Book</Link>
             </Button>
             <Button
               color="#8170F2"
@@ -71,14 +70,14 @@ const HeroSection = () => {
               w="193px"
               variant="outline"
             >
-              See All Recomendation
+              See All Recommendation
             </Button>
           </Box>
         </Box>
         <Box maxW="50%" margin="auto" mr="71px">
           <Image
             my="66px"
-            src={foundHighestRating.image_url}
+            src={foundHighestRating?.image_url}
             maxW="408.45px"
             h="390px"
           />

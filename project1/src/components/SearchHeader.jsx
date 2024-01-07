@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, Text } from "@chakra-ui/react"
-import { useSelector } from "react-redux"
 
-const SearchHeader = () => {
-  const keyword = useSelector((state) => state.search.keyword)
-
+const SearchHeader = ({ keyword, titleB, titleA }) => {
   return (
     <>
       <Box
@@ -24,8 +21,9 @@ const SearchHeader = () => {
           lineHeight="63px"
           ml="61px"
         >
-          <Text color="#8170F2">Search For</Text>
-          <Text ml="20px">{keyword}</Text>
+          {titleA && <Text mr="12px">Our</Text>}
+          <Text color="#8170F2">{titleB}</Text>
+          <Text ml="12px">{keyword}</Text>
         </Box>
       </Box>
     </>

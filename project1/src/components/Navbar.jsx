@@ -22,6 +22,7 @@ const Navbar = () => {
 
       if (searchResults.length === 0) {
         navigate("notfound")
+        dispatch(searchKeyword(query))
         setQuery("")
       } else {
         dispatch(updateSearchResults(searchResults))
@@ -92,13 +93,13 @@ const Navbar = () => {
               _hover={{ borderBottom: "solid 1px", transition: "0.5s" }}
               cursor="pointer"
             >
-              <Link to={""}>Latest</Link>
+              <Link to={"/latest"}>Latest</Link>
             </Text>
             <Text
               _hover={{ borderBottom: "solid 1px", transition: "0.5s" }}
               cursor="pointer"
             >
-              <Link to={""}>Top Picks</Link>
+              <Link to={"/top-pics"}>Top Picks</Link>
             </Text>
           </Box>
           <Box
@@ -139,7 +140,7 @@ const Navbar = () => {
             mt="40px"
           >
             {" "}
-            Edit
+            Login
           </Button>
         </Box>
       </Box>
