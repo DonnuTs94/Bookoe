@@ -1,5 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Box, Button, Icon, Image, Input, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Button,
+  Icon,
+  Image,
+  Input,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react"
 import { Search2Icon } from "@chakra-ui/icons"
 import logo from "../assets/Group 3.png"
 import { Link, useNavigate } from "react-router-dom"
@@ -7,9 +16,11 @@ import { useState } from "react"
 import { axiosInstance } from "../api"
 import { useDispatch } from "react-redux"
 import { searchKeyword, updateSearchResults } from "../redux/search/searchSlice"
+import ModalLogin from "./ModalLogin"
 
 const Navbar = () => {
   const [query, setQuery] = useState("")
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -138,11 +149,13 @@ const Navbar = () => {
             fontSize="20px"
             ml="20px"
             mt="40px"
+            onClick={onOpen}
           >
             {" "}
             Login
           </Button>
         </Box>
+        <ModalLogin onOpen={isOpen} isOpen={isOpen} onClose={onClose} />
       </Box>
     </>
   )

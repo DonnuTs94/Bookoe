@@ -1,5 +1,5 @@
 import { Box, Text } from "@chakra-ui/react"
-import SearchHeader from "../components/SearchHeader"
+import SearchHeader from "../components/HeaderTitle"
 import { useSelector } from "react-redux"
 
 const NotFound = () => {

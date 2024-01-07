@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, Text } from "@chakra-ui/react"
 
-const SearchHeader = ({ keyword, titleB, titleA }) => {
+const HeaderTitle = ({ keyword, titleB, titleA }) => {
   return (
     <>
       <Box
@@ -30,4 +30,4 @@ const SearchHeader = ({ keyword, titleB, titleA }) => {
   )
 }
 
-export default SearchHeader
+export default HeaderTitle

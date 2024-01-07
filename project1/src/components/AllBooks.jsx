@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Box,
   Text,
@@ -7,28 +8,10 @@ import {
   Flex,
   Center,
 } from "@chakra-ui/react"
-import { axiosInstance } from "../api/index"
-import { useEffect } from "react"
-import { useState } from "react"
-import { Outlet } from "react-router-dom"
+import { Link } from "react-router-dom"
+import Rating from "./Ratting"
 
-const AllBooks = () => {
-  const [books, setBooks] = useState([])
-
-  const getAllBooks = async () => {
-    try {
-      const response = await axiosInstance.get("/books")
-      setBooks(response.data.data.slice(0, 4))
-      //   }
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  useEffect(() => {
-    getAllBooks()
-  }, [])
-
+const AllBooks = ({ books }) => {
   return (
     <>
       <Box display="flex" mt="116px" px="98px">
@@ -52,7 +35,7 @@ const AllBooks = () => {
                     by {book.author.name}
                   </Text>
                   {/* Add your rating component here */}
-                  <Box>RATING</Box>
+                  <Rating rating={book.rating} />
                   <Box h="100px" overflow="hidden" mb={2}>
                     <Text fontSize="16px" overflow="hidden">
                       {book.synopsis}
@@ -69,7 +52,7 @@ const AllBooks = () => {
                     position="absolute"
                     bottom="0"
                   >
-                    Read Book
+                    <Link to={`/book/${book.id}`}>Read Book</Link>
                   </Button>
                 </Box>
               </Flex>
@@ -77,7 +60,6 @@ const AllBooks = () => {
           </SimpleGrid>
         </Center>
       </Box>
-      <Outlet />
     </>
   )
 }

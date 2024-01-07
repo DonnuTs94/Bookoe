@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchBooksData } from "../redux/allBooks/booksAsync"
+import Rating from "./Ratting"
 
 const HeroSection = () => {
   const [foundHighestRating, setFoundHighestRating] = useState(null)
@@ -47,7 +48,7 @@ const HeroSection = () => {
             <Text fontSize="16px" mr="16px">
               {foundHighestRating?.author?.name || ""}
             </Text>
-            <Text>{foundHighestRating?.rating}</Text>
+            <Rating rating={foundHighestRating?.rating} />
           </Box>
 
           <Text fontSize="16px">{foundHighestRating?.synopsis}</Text>

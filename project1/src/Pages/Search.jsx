@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box } from "@chakra-ui/react"
-import SearchHeader from "../components/SearchHeader"
-import SearchList from "../components/SearchList"
+import SearchHeader from "../components/HeaderTitle"
+import SearchList from "../components/Cards"
 import { useSelector } from "react-redux"
 
 const Search = () => {

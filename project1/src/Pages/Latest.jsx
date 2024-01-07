@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react"
-import SearchHeader from "../components/SearchHeader"
+import SearchHeader from "../components/HeaderTitle"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchBooksData } from "../redux/allBooks/booksAsync"
 import { useEffect } from "react"
-import SearchList from "../components/SearchList"
+import SearchList from "../components/Cards"
 
 const Latest = () => {
   const dispatch = useDispatch()

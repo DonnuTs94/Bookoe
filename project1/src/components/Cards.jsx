@@ -10,8 +10,9 @@ import {
 } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 import { format } from "date-fns"
+import Rating from "./Ratting"
 
-const SearchList = ({ bookData, renderDate, renderNumber, renderBorder }) => {
+const Cards = ({ bookData, renderDate, renderNumber, renderBorder }) => {
   const filteringData = bookData.slice(0, 4)
 
   return (
@@ -85,7 +86,9 @@ const SearchList = ({ bookData, renderDate, renderNumber, renderBorder }) => {
               <Text fontSize="20px" fontWeight="400" lineHeight="30px" mt="6px">
                 by {item.author.name}
               </Text>
-              <Text mt="14px">Rating</Text>
+              <Box mt="14px">
+                <Rating rating={item.rating} />
+              </Box>
             </CardBody>
             <CardFooter>
               <Button
@@ -108,4 +111,4 @@ const SearchList = ({ bookData, renderDate, renderNumber, renderBorder }) => {
   )
 }
 
-export default SearchList
+export default Cards
