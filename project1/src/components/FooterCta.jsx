@@ -5,7 +5,7 @@ import logo from "../assets/Group 3.png"
 const FooterCta = () => {
   return (
     <>
-      <Box marginX="100px">
+      <Box marginX="96px">
         <Box
           bgColor="#8170F2"
           borderRadius="15px"

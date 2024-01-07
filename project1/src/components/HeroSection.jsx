@@ -1,4 +1,5 @@
 import { Box, Button, Image, Text } from "@chakra-ui/react"
+import { FaArrowRight } from "react-icons/fa6"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
@@ -63,6 +64,9 @@ const HeroSection = () => {
               mr="15px"
             >
               <Link to={`/book/${foundHighestRating?.id}`}>Read Book</Link>
+              <Box fontSize="15px" pl="13px" mt="3px">
+                <FaArrowRight />
+              </Box>
             </Button>
             <Button
               color="#8170F2"

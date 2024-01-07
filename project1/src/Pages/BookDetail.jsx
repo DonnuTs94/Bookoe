@@ -2,6 +2,7 @@ import { Box, Image, Text } from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
 import { axiosInstance } from "../api"
 import { useEffect, useState } from "react"
+import Rating from "../components/Ratting"
 
 const BookDetail = () => {
   const [BookDetail, setBookDetail] = useState([])
@@ -16,8 +17,6 @@ const BookDetail = () => {
       console.log(err)
     }
   }
-
-  console.log(BookDetail)
 
   useEffect(() => {
     getBookById()
@@ -50,9 +49,32 @@ const BookDetail = () => {
           >
             by {BookDetail.author ? BookDetail.author.name : ""}
           </Text>
-          <Text h="55.8px" w="279px">
-            {BookDetail.rating}
-          </Text>
+          <Box
+            h="55.8px"
+            w="279px"
+            mt="19px"
+            display="flex"
+            alignItems="center"
+          >
+            <Box
+              bgColor="#FDAF17"
+              borderRadius="50"
+              h="55.16px"
+              w="55.16px"
+              mr="12px"
+            >
+              <Text
+                textColor="white"
+                textAlign="center"
+                p="12px"
+                fontSize="21.53px"
+                fontWeight="400"
+              >
+                {BookDetail.rating}
+              </Text>
+            </Box>
+            <Rating rating={BookDetail.rating} />
+          </Box>
           <Text
             w="745px"
             h="119px"

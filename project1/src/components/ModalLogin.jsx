@@ -11,12 +11,50 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  useToast,
 } from "@chakra-ui/react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
+import { axiosInstance } from "../api"
 
 const ModalLogin = ({ isOpen, onOpen, onClose }) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
   const initialRef = useRef(null)
   const finalRef = useRef(null)
+
+  const toast = useToast()
+
+  const loginUser = async () => {
+    try {
+      const response = await axiosInstance.post("/auth", {
+        email,
+        password,
+      })
+
+      setEmail("")
+      setPassword("")
+      onClose(onClose)
+
+      toast({
+        title: "Successfully Login",
+        status: "success",
+        duration: "4000",
+        isClosable: true,
+      })
+
+      localStorage.setItem("auth_token", response.data.token)
+      console.log(response)
+    } catch (err) {
+      toast({
+        title: "Wrong Email or Password",
+        description: "Check your email or password",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      })
+    }
+  }
 
   return (
     <>
@@ -38,11 +76,22 @@ const ModalLogin = ({ isOpen, onOpen, onClose }) => {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input ref={initialRef} placeholder="Email" />
+              <Input
+                ref={initialRef}
+                placeholder="Email"
+                value={email}
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>Password</FormLabel>
-              <Input placeholder="Password" type="password" />
+              <Input
+                placeholder="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </FormControl>
           </ModalBody>
           <ModalFooter mb="20px">
@@ -52,6 +101,7 @@ const ModalLogin = ({ isOpen, onOpen, onClose }) => {
               mr={3}
               w="100%"
               color="#8170f2"
+              onClick={loginUser}
             >
               Submit
             </Button>

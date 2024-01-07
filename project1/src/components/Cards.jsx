@@ -19,7 +19,6 @@ const Cards = ({ bookData, renderDate, renderNumber, renderBorder }) => {
     <>
       <Box mt="77px" display="flex" gap="64px">
         {filteringData.map((item, i) => (
-          // <SimpleGrid key={item.id}>
           <Card key={item.id} w="265px" h="auto">
             <CardBody position="relative">
               <Image
@@ -104,7 +103,6 @@ const Cards = ({ bookData, renderDate, renderNumber, renderBorder }) => {
               </Button>
             </CardFooter>
           </Card>
-          // </SimpleGrid>
         ))}
       </Box>
     </>

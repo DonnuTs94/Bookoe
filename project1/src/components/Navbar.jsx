@@ -21,6 +21,7 @@ import ModalLogin from "./ModalLogin"
 const Navbar = () => {
   const [query, setQuery] = useState("")
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isLoggedout, setIsLoggedout] = useState(false)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -44,6 +45,11 @@ const Navbar = () => {
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const logOut = () => {
+    localStorage.removeItem("auth_token")
+    setIsLoggedout(true)
   }
 
   const handleKey = (e) => {
@@ -139,21 +145,37 @@ const Navbar = () => {
               top="20px"
             />
           </Box>
-          <Button
-            h="50px"
-            w="135px"
-            textColor="#8170F2"
-            colorScheme="#8170F2"
-            rounded={8}
-            variant="outline"
-            fontSize="20px"
-            ml="20px"
-            mt="40px"
-            onClick={onOpen}
-          >
-            {" "}
-            Login
-          </Button>
+          {localStorage.getItem("auth_token") ? (
+            <Button
+              h="50px"
+              w="135px"
+              textColor="#8170F2"
+              colorScheme="#8170F2"
+              rounded={8}
+              variant="outline"
+              fontSize="20px"
+              ml="20px"
+              mt="40px"
+              onClick={logOut}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button
+              h="50px"
+              w="135px"
+              textColor="#8170F2"
+              colorScheme="#8170F2"
+              rounded={8}
+              variant="outline"
+              fontSize="20px"
+              ml="20px"
+              mt="40px"
+              onClick={onOpen}
+            >
+              Login
+            </Button>
+          )}
         </Box>
         <ModalLogin onOpen={isOpen} isOpen={isOpen} onClose={onClose} />
       </Box>
