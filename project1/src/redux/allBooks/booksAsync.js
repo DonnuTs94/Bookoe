@@ -1,13 +1,11 @@
-import { createAsyncThunk } from "@reduxjs/toolkit"
 import { axiosInstance } from "../../api"
+import { booksData } from "./allBooksSlice"
 
-const fetchBooksData = createAsyncThunk("books/fetchBooksData", async () => {
+export const fetchBooksData = () => async (dispatch) => {
   try {
     const response = await axiosInstance.get("/books")
-    return response.data.data
+    dispatch(booksData(response.data.data))
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
-})
-
-export default fetchBooksData
+}

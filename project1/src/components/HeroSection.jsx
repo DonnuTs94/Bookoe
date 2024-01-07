@@ -1,33 +1,30 @@
 import { Box, Button, Image, Text } from "@chakra-ui/react"
-import { axiosInstance } from "../api"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchBooksData } from "../redux/allBooks/booksAsync"
 
 const HeroSection = () => {
   const [foundHighestRating, setFoundHighestRating] = useState([])
-
-  const getDataBooks = async () => {
-    try {
-      const response = await axiosInstance.get("/books")
-      const dataBooks = response.data.data
-
-      const foundHighestRating = Math.max(
-        ...dataBooks.map((books) => books.rating),
-        0
-      )
-
-      const bookWithHighestRating = dataBooks.find(
-        (book) => book.rating === foundHighestRating
-      )
-      setFoundHighestRating(bookWithHighestRating)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  const dispatch = useDispatch()
+  const booksData = useSelector((state) => state.books.books)
 
   useEffect(() => {
-    getDataBooks()
-  }, [])
+    const fetchData = async () => {
+      await dispatch(fetchBooksData())
+    }
+    fetchData()
+  }, [dispatch])
+
+  useEffect(() => {
+    const ratting = Math.max(...booksData.map((book) => book.rating), 0)
+    const bookWithHighestRating = booksData.find(
+      (book) => book.rating === ratting
+    )
+
+    setFoundHighestRating(bookWithHighestRating)
+  }, [booksData])
+
   return (
     <>
       <Box
