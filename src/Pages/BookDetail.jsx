@@ -24,15 +24,18 @@ const BookDetail = () => {
 
   return (
     <>
-      <Box mt="166px" display="flex" px="98px">
-        <Box mr="76px" maxH="587px" w="408px">
+      <Box mt="142px" display="flex" px="98px">
+        <Box mr="76px" h="587px" w="408px">
           <Image
             borderRadius="14.5px"
             src={BookDetail.image_url}
             boxSize="100%"
+            w="100%"
+            h="100%"
+            objectFit="cover"
           />
         </Box>
-        <Box mt="62px">
+        <Box mt="62px" w="745px">
           <Text
             fontSize="62px"
             color="#1D1D1D"

@@ -11,7 +11,7 @@ const Search = () => {
 
   return (
     <>
-      <Box mt="166px" px="98px">
+      <Box mt="142px" px="98px">
         <SearchHeader keyword={keyword} titleB={"Search for"} />
         <SearchList bookData={filteringData} />
       </Box>

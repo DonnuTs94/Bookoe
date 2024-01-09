@@ -6,6 +6,7 @@ import Search from "./Pages/Search"
 import NotFound from "./Pages/NotFound"
 import TopPicks from "./Pages/TopPicks"
 import Latest from "./Pages/Latest"
+import Page404 from "./Pages/Page404"
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "latest", Component: Latest },
     ],
   },
+  { path: "*", Component: Page404 },
 ])
 
 export { router }

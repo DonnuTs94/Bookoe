@@ -7,7 +7,7 @@ const NotFound = () => {
 
   return (
     <>
-      <Box mt="166px" px="100px">
+      <Box mt="142px" px="98px">
         <SearchHeader keyword={keyword} titleB={"Search for"} />
         <Box
           border="1px #8170F2 solid"

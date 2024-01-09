@@ -18,13 +18,14 @@ const AllBooks = ({ books }) => {
         <Center margin="auto">
           <SimpleGrid columns={2} gap="114px" mt="30px">
             {books.map((book) => (
-              <Flex gap={6} key={book.id} width="fit-content">
-                <Box>
+              <Flex gap={6} key={book.id} width="564px">
+                <Box h="346px" w="277px">
                   <Image
-                    h="346px"
-                    w="277px"
                     src={book.image_url}
                     objectFit="cover"
+                    w="100%"
+                    h="100%"
+                    borderRadius="8px"
                   />
                 </Box>
                 <Box w="287px" position="relative">
@@ -34,7 +35,6 @@ const AllBooks = ({ books }) => {
                   <Text fontSize="16px" mb={2} mt={3}>
                     by {book.author.name}
                   </Text>
-                  {/* Add your rating component here */}
                   <Rating rating={book.rating} />
                   <Box h="100px" overflow="hidden" mb={2}>
                     <Text fontSize="16px" overflow="hidden">

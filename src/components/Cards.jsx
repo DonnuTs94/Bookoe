@@ -21,12 +21,15 @@ const Cards = ({ bookData, renderDate, renderNumber, renderBorder }) => {
         {filteringData.map((item, i) => (
           <Card key={item.id} w="265px" h="auto">
             <CardBody position="relative">
-              <Image
-                src={item.image_url}
-                w="260px"
-                borderRadius="8px"
-                h="340px"
-              />
+              <Box h="360px">
+                <Image
+                  src={item.image_url}
+                  w="100%"
+                  borderRadius="8px"
+                  h="100%"
+                  objectFit="cover"
+                />
+              </Box>
               {renderBorder && (
                 <Box
                   h="41px"

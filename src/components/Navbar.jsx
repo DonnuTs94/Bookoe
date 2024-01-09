@@ -71,11 +71,12 @@ const Navbar = () => {
         top="0"
         left="0"
         right="0"
-        m="0 auto"
+        m="auto"
         paddingX="100px"
+        h="110px"
       >
         <Box display="flex" alignItems="center" position="relative">
-          <Box mr="-25px" w="100px" h="100px" mt="33px">
+          <Box mr="-25px" w="100px" h="100px" mt="56px">
             <Image src={logo} alt="logo" />
           </Box>
           <Box textAlign="start">
@@ -87,7 +88,12 @@ const Navbar = () => {
             </Text>
           </Box>
         </Box>
-        <Box display="flex">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          mt="20px"
+        >
           <Box
             w="226px"
             h="30px"
@@ -124,7 +130,7 @@ const Navbar = () => {
             display="flex"
             flexShrink="0"
             position="relative"
-            top="40px"
+            // top="40px"
           >
             <Input
               h="50px"
@@ -155,7 +161,7 @@ const Navbar = () => {
               variant="outline"
               fontSize="20px"
               ml="20px"
-              mt="40px"
+              // mt="40px"
               onClick={logOut}
             >
               Logout
@@ -170,7 +176,7 @@ const Navbar = () => {
               variant="outline"
               fontSize="20px"
               ml="20px"
-              mt="40px"
+              // mt="40px"
               onClick={onOpen}
             >
               Login

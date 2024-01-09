@@ -9,7 +9,7 @@ const FooterCta = () => {
         <Box
           bgColor="#8170F2"
           borderRadius="15px"
-          mt="107px"
+          mt="118px"
           h="303px"
           display="flex"
           flexDir="column"
@@ -21,26 +21,27 @@ const FooterCta = () => {
               fontWeight="600"
               lineHeight="63px"
               maxW="794px"
-              margin="auto"
+              margin="0 auto"
+              h="126px"
             >
               Join our newsletter to get our latest recommendation!
             </Text>
           </Box>
           <Box
             display="flex"
-            maxW="452px"
+            w="452px"
             alignItems="center"
             justifyContent="center"
             margin="auto"
             h="50px"
-            mt="22px"
+            mt="-38px"
             position="relative"
           >
             <Input
               borderRadius="8px"
               bgColor="white"
               mr="8px"
-              w="452px"
+              w="345px"
               h="50px"
               placeholder="Enter your mail"
               pl="59px"
@@ -70,7 +71,7 @@ const FooterCta = () => {
               <Box mr="-25px" w="100px" h="100px" mt="33px">
                 <Image src={logo} alt="logo" />
               </Box>
-              <Box textAlign="start">
+              <Box textAlign="start" mb="15px">
                 <Text fontSize="41px" fontWeight="500" color="#1D1D1D">
                   Bookoe
                 </Text>
@@ -79,10 +80,10 @@ const FooterCta = () => {
                 </Text>
               </Box>
             </Box>
-            <Box w="526.27px">
+            <Box w="526.27px" h="60px">
               <Text fontSize="18px" fontWeight="400" lineHeight="30px" h="80px">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod
-                animi facere rerum.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
               </Text>
             </Box>
           </Box>

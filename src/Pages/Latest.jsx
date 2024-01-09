@@ -5,7 +5,7 @@ import { fetchBooksData } from "../redux/allBooks/booksAsync"
 import { useEffect } from "react"
 import SearchList from "../components/Cards"
 
-const TopPicks = () => {
+const Latest = () => {
   const dispatch = useDispatch()
   const booksData = useSelector((state) => state.books.books)
 
@@ -16,19 +16,19 @@ const TopPicks = () => {
     fetchData()
   }, [dispatch])
 
-  const dataFilter = booksData.slice(3, 7)
+  const dataFilter = booksData.slice(15, 19)
   return (
     <>
-      <Box mt="166px" px="98px">
-        <SearchHeader titleB={"Top"} keyword={"Picks Collection"} />
+      <Box mt="142px" px="98px">
+        <SearchHeader titleA={true} titleB="Latest" keyword="Collection" />
         <SearchList
           bookData={dataFilter}
           renderBorder={true}
-          renderNumber={true}
+          renderDate={true}
         />
       </Box>
     </>
   )
 }
 
-export default TopPicks
+export default Latest

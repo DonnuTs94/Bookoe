@@ -21,7 +21,7 @@ const All = () => {
   const booksFilter = booksData.slice(0, 4)
   return (
     <>
-      <HeroSection />
+      <HeroSection booksData={booksData} booksImage={booksData} />
       <AllBooks books={booksFilter} />
       <Box px="96px">
         <Cards bookData={dataFilter} />

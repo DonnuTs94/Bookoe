@@ -1,22 +1,12 @@
+/* eslint-disable react/prop-types */
 import { Box, Button, Image, Text } from "@chakra-ui/react"
 import { FaArrowRight } from "react-icons/fa6"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchBooksData } from "../redux/allBooks/booksAsync"
 import Rating from "./Ratting"
 
-const HeroSection = () => {
+const HeroSection = ({ booksData }) => {
   const [foundHighestRating, setFoundHighestRating] = useState(null)
-  const dispatch = useDispatch()
-  const booksData = useSelector((state) => state.books.books)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(fetchBooksData())
-    }
-    fetchData()
-  }, [dispatch])
 
   useEffect(() => {
     const ratting = Math.max(...booksData.map((book) => book.rating), 0)
@@ -33,12 +23,14 @@ const HeroSection = () => {
         bgColor="#F1F0FE"
         margin="auto"
         display="flex"
-        mt="140px"
+        mt="142px"
         zIndex="0"
         position="relative"
         mx="100px"
+        h="522px"
+        borderRadius="15px"
       >
-        <Box margin="auto" ml="71px">
+        <Box margin="0 auto" ml="71px" w="525px" mt="66px">
           <Text color="#8170F2" fontSize="20px">
             MUST READ
           </Text>
@@ -53,7 +45,7 @@ const HeroSection = () => {
           </Box>
 
           <Text fontSize="16px">{foundHighestRating?.synopsis}</Text>
-          <Box display="flex" mt="40px">
+          <Box display="flex" mt="40px" position="relative" bottom="-9">
             <Button
               bgColor="#8170F2"
               _hover={{ bgColor: "#8170F2" }}
@@ -64,7 +56,7 @@ const HeroSection = () => {
               mr="15px"
             >
               <Link to={`/book/${foundHighestRating?.id}`}>Read Book</Link>
-              <Box fontSize="15px" pl="13px" mt="3px">
+              <Box fontSize="15px" pl="13px" mt="2px">
                 <FaArrowRight />
               </Box>
             </Button>
@@ -72,19 +64,62 @@ const HeroSection = () => {
               color="#8170F2"
               colorScheme="#8170F2"
               h="50px"
-              w="193px"
+              w="314px"
               variant="outline"
             >
-              See All Recommendation
+              <Link to={"/top-pics"}>See All Recommendation</Link>
             </Button>
           </Box>
         </Box>
-        <Box maxW="50%" margin="auto" mr="71px">
+        <Box
+          margin="auto"
+          mr="201.08px"
+          h="390px"
+          width="280.14px"
+          borderRadius="10px"
+          position="relative"
+          right="0"
+          top="29"
+          mt="38px"
+          display="flex"
+        >
           <Image
+            borderRadius="10px"
             my="66px"
             src={foundHighestRating?.image_url}
-            maxW="408.45px"
-            h="390px"
+            h="100%"
+            w="100%"
+            objectFit="cover"
+            margin="0"
+            zIndex="3"
+          />
+          <Image
+            borderRadius="10px"
+            my="66px"
+            src={booksData[9]?.image_url}
+            h="83.5%"
+            w="84%"
+            objectFit="cover"
+            position="absolute"
+            left="117px"
+            top="8"
+            ml="10px"
+            m="0"
+            zIndex="2"
+          />
+          <Image
+            borderRadius="10px"
+            my="66px"
+            src={booksData[5]?.image_url}
+            h="69.8%"
+            w="70%"
+            objectFit="cover"
+            margin="0"
+            zIndex="1"
+            position="absolute"
+            left="205px"
+            top="59px"
+            m="0"
           />
         </Box>
       </Box>
